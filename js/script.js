@@ -14,42 +14,30 @@ alert("Ciao! Segui questi semplici passi per calcolare il prezzo del tuo bigliet
 
 var kilometri = parseInt(prompt("Quanti km devi percorrere?"));
 console.log(kilometri);
-document.getElementById("km").innerHTML = kilometri;
 
 var eta = parseInt(prompt("Quanti anni hai?"));
 console.log(eta);
-document.getElementById("età").innerHTML = eta;
 
-var prezzoBiglietto = kilometri * 0.21;
-console.log(prezzoBiglietto.toFixed(2));
-var prezzoBiglietto = prezzoBiglietto.toFixed(2);
+var prezzoBiglietto = (kilometri * 0.21);
+console.log(prezzoBiglietto);
 
-var scontoMinorenni = (prezzoBiglietto * 20) / 100;
-console.log(scontoMinorenni.toFixed(2));
-var scontoMinorenni = scontoMinorenni.toFixed(2);
+var sconto;
 
-var prezzoMinorenni = prezzoBiglietto - scontoMinorenni;
-console.log(prezzoMinorenni.toFixed(2));
-var prezzoMinorenni = prezzoMinorenni.toFixed(2);
-
-var scontoAnziani = (prezzoBiglietto * 40) / 100;
-console.log(scontoAnziani.toFixed(2));
-var scontoAnziani = scontoAnziani.toFixed(2);
-
-var prezzoAnziani = prezzoBiglietto - scontoAnziani;
-console.log(prezzoAnziani.toFixed(2));
-var prezzoAnziani = prezzoAnziani.toFixed(2);
+var prezzoFinale;
 
 if (eta < 18) {
-    prezzoBiglietto = prezzoMinorenni;
-    console.log("Prezzo del biglietto per i minorenni");
-    document.getElementById("prezzo-finale").innerHTML = prezzoMinorenni;
+    sconto = ((prezzoBiglietto * 20) /100).toFixed(2);
+    prezzoFinale = prezzoBiglietto - sconto;
+    console.log("Il passeggero è minorenne, il biglietto costa: " + prezzoFinale.toFixed(2));
+    document.getElementById("ticket").innerHTML = "Il passeggero è minorenne, il biglietto costa: " +  prezzoFinale.toFixed(2) + " &euro;";
 } else if (eta > 65) {
-    prezzoBiglietto = prezzoAnziani;
-    console.log("Prezzo del biglietto per gli anziani");
-    document.getElementById("prezzo-finale").innerHTML = prezzoAnziani;
+    sconto = ((prezzoBiglietto * 40) /100).toFixed(2);
+    prezzoFinale = prezzoBiglietto - sconto;
+    console.log("Il passeggero è over-65, il biglietto costa: " + prezzoFinale.toFixed(2));
+    document.getElementById("ticket").innerHTML = "Il passeggero è over-65, il biglietto costa: " +  prezzoFinale.toFixed(2) + " &euro;";
 } else {
-    prezzoBiglietto == prezzoBiglietto;
-    console.log("prezzo del biglietto ordinario");
-    document.getElementById("prezzo-finale").innerHTML = prezzoBiglietto;
+    sconto = 0;
+    prezzoFinale = prezzoBiglietto - sconto;
+    console.log("Il prezzo del biglietto ordinario è " + prezzoFinale.toFixed(2));
+    document.getElementById("ticket").innerHTML = "Il prezzo del biglietto ordinario è " +  prezzoFinale.toFixed(2) + " &euro;";
 }
